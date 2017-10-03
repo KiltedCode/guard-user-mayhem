@@ -1,0 +1,19 @@
+{
+  "name": "visual-awesomesauce",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/RHGeek/d3-ng-visual-awesomesauce/blob/master/LICENSE"
+    }
+  ],
+  "dependencies": {
+    "reveal.js": "^3.4.1"
+  },
+  "devDependencies": {
+    "lite-server": "^2.3.0"
+  }
+}

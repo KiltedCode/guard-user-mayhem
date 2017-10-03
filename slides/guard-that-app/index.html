@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Guard That App From User Mayhem</title>
+
+		<link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="node_modules/reveal.js/css/theme/league.css">
+		<link rel="stylesheet" href="styles.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="node_modules/reveal.js/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'node_modules/reveal.js/css/print/pdf.css' : 'node_modules/reveal.js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+                <section id="title" data-background="/assets/img/captain-angular-bg.png">
+                    <div class="bg-img">
+                    <h1 class="bg-img">Guard That App From User Mayhem</h1>
+                    <p class="">
+                        John Niedzwiecki
+                    </p>
+                    </div>
+                    <aside class="notes">
+                        
+                    </aside>
+                </section>
+
+                <section id="about-me">
+                    <h2>About the Geek</h2>
+                    <pre class="small-code"><code>function getDeveloperInfo() {
+    let dev = {
+        name: 'John Niedzwiecki',
+        desc: 'Your friendly neighborhood kilted coder.',
+        company: 'VIPRE Security',
+        role: 'Lead Software Engineer - UI',
+        twitter: '@rhgeek',
+        github: 'rhgeek',
+        web: 'https://rhgeek.github.io',
+        email: 'john.niedzwiecki.ii@gmail.com',
+        currentDevLoves: ['Angular', 'JavaScript Everywhere', 'd3', 'CSS instead of JS'],
+        nonDevAttr : {
+            isHusband: true,
+            isFather: true,
+            hobbies: ['running', 'disney', 'cooking', 'video games', 'photography'],
+            twitter: '@rgrdisney',
+            web: 'http://www.rungeekrundisney.com',
+        }
+    };
+    return dev;
+}</code></pre>
+                </section>
+
+                <section id="abstract">
+                    <h1>Users are Chaos Monkeys</h1>
+                    <aside class="notes">
+                        Users are chaos monkeys. They can navigate anywhere at any time in your application. 
+                        Angular provides you with guards to protect the routing of your application. 
+                        If you don’t use guards, you’re responsible when they click that link before saving after 15 minutes of data entry. 
+                        Learn some of the powerful uses of guards, to keep your app better protected from mayhem like them.
+                    </aside>
+                </section>
+
+                <section id="outline">
+                    <h2>What We'll Do</h2>
+                    <ul>
+                        <li>Bing</li>
+                        <li>Bang</li>
+                        <li>Boom</li>
+                    </ul>
+                </section>
+
+                <section id="topic-xxxx">
+                    <section id="xxxx">
+                        <h1 class="section-title">Bing</h1>
+                    </section>
+
+                    <section id="xxxxx">
+                        <h2>Bing</h2>
+                        <p>
+                            Content
+                        </p>
+                    </section>
+
+                </section>
+
+                 
+
+                <section id="wrap-up">
+                        <img src="/assets/img/angularmix.png" class="no-style conf-logo-end--mix" title="AngularMix" />
+                    <p>
+                        Find me: <span title="twitter and github">@rhgeek</span>
+                    </p>
+                    <p>
+                        <a href="https://rhgeek.github.io/" title="dev blog">https://rhgeek.github.io/</a>
+                    </p>
+                    <p>
+                        Code: <a href="https://github.com/RHGeek/guard-user-mayhem" title="code examples">https://github.com/RHGeek/guard-user-mayhem</a>
+                    </p>
+                </section>
+
+
+			</div>
+		</div>
+
+		<script src="node_modules/reveal.js/lib/js/head.min.js"></script>
+		<script src="node_modules/reveal.js/js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'node_modules/reveal.js/plugin/markdown/marked.js' },
+					{ src: 'node_modules/reveal.js/plugin/markdown/markdown.js' },
+					{ src: 'node_modules/reveal.js/plugin/notes/notes.js', async: true },
+					{ src: 'node_modules/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
