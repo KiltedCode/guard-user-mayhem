@@ -12,13 +12,15 @@ import { RoleGuard } from './shared/role-guard.service';
 import { HomeComponent } from './home/home.component';
 import { ParksService } from './shared/parks.service';
 import { ResortDetailsComponent } from './resort-details/resort-details.component';
+import { TypeFilterPipe } from './shared/type-filter.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ResortDetailsComponent
+    ResortDetailsComponent,
+    TypeFilterPipe
   ],
   imports: [
     AppRoutingModule,

@@ -44,9 +44,10 @@ export class ResortDetailsComponent implements OnInit {
   filterType(type: string): void {
     let i = this.filters.indexOf(type);
     if(i == -1) {
-      this.filters.push(type);
+      this.filters = this.filters.concat(type);
     } else {
-      this.filters.splice(i, 1);
+      this.filters = [ ...this.filters.slice(0, i), ...this.filters.slice(i + 1) ]
+      // this.filters.splice(i, 1);
     }
   }
 

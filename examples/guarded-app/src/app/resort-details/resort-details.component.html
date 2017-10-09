@@ -31,7 +31,7 @@
 
   <mat-list class="attraction-list mat-elevation-z8">
       <ng-template ngFor let-attr
-      [ngForOf]="attractions">
+      [ngForOf]="attractions | typeFilter:filters">
       <mat-list-item>
         <mat-icon *ngIf="attr.type=='character'" matListIcon>contacts</mat-icon>
         <mat-icon *ngIf="attr.type=='food'" matListIcon>local_dining</mat-icon>
