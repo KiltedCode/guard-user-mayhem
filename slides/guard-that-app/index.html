@@ -28,10 +28,10 @@
 
                 <section id="title" data-background="/assets/img/captain-angular-bg.png">
                     <div class="bg-img">
-                    <h1 class="bg-img">Guard That App From User Mayhem</h1>
-                    <p class="">
-                        John Niedzwiecki
-                    </p>
+                        <h1 class="bg-img">Guard That App From User Mayhem</h1>
+                        <p class="">
+                            John Niedzwiecki
+                        </p>
                     </div>
                     <aside class="notes">
                         
@@ -56,7 +56,7 @@
             isFather: true,
             hobbies: ['running', 'disney', 'cooking', 'video games', 'photography'],
             twitter: '@rgrdisney',
-            web: 'http://www.rungeekrundisney.com',
+            web: 'http://www.rungeekrundisney.com'
         }
     };
     return dev;
@@ -80,13 +80,33 @@
                 </section>  
 
                 <section id="outline">
-                    <h2><img src="/assets/img/captain-angular.png" class="no-style inline-header-logo" alt="NG" title="Captain Angular" /> What We'll Do</h2>
-                    <ul>
-                        <li>CanActivate</li>
-                        <li>CanDeactivate</li>
-                        <li>Resolve</li>
-                        <li>CanLoad</li>
-                    </ul>
+                    <section id="outline-list">
+                        <h2><img src="/assets/img/captain-angular.png" class="no-style inline-header-logo" alt="NG" title="Captain Angular" /> What We'll Do</h2>
+                        <ul>
+                            <li>CanActivate</li>
+                            <li>CanActivateChild</li>
+                            <li>CanDeactivate</li>
+                            <li>CanLoad</li>
+                            <li>Resolve</li>
+                        </ul>
+                    </section>
+
+                    <section id="outline-ooo">
+                        <h2>Order of Operations</h2>
+                        <ul>
+                            <li>CanDeactivate &amp; CanActivateChild<br />
+                                <span class="list-sub">deepest child route to top</span>
+                            </li>
+                            <li>CanActivate<br />
+                                <span class="list-sub">top down to deepest child route</span>
+                            </li>
+                            <li>If module asynchronously loaded, CanLoad</li>
+                            <li>If <em>any</em> return false<br/>
+                                <span class="list-sub">pending guards cancelled</span><br />
+                                <span class="list-sub">navigation cancelled</span>
+                            </li>
+                        </ul>
+                    </section>
                 </section>
                 
                 <section id="topic-can-activate">
@@ -97,8 +117,55 @@
                     <section id="can-activate">
                         <h2>CanActivate</h2>
                         <p>
-                            Handle navigation to a route.
+                            Mediates navigation to a route.
                         </p>
+                        <p class="fragment">
+                            Asks the question "Can I navigate to this route?"
+                        </p>
+                        <aside class="notes">
+                            Most common use cases are authentication and role based access.
+                        </aside>
+                    </section>
+
+                    <section id="can-activate-interface">
+                        <h2>CanActivate Interface</h2>
+<pre><code class="groovy" data-trim>
+interface CanActivate { 
+    canActivate(
+        route: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot
+    ): Observable&lt;boolean&gt; | Promise&lt;boolean&gt; | boolean
+}
+</code></pre>
+                    </section>
+
+                </section>
+                
+                <section id="topic-can-activate-child">
+                    <section id="can-activate-child-title">
+                        <h1 class="section-title">CanActivateChild</h1>
+                    </section>
+
+                    <section id="can-activate">
+                        <h2>CanActivateChild</h2>
+                        <p>
+                            Mediates navigation to a child route.
+                        </p>
+                        <p class="fragment">
+                            Also asks the question "Can I navigate to this route?"
+                        </p>
+                    </section>
+                    
+                    <section id="can-activate-interface">
+                        <h2>CanActivateChild Interface</h2>
+<pre><code class="groovy" data-trim>
+interface CanActivateChild { 
+    canActivateChild(
+        route: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot
+    ): Observable&lt;boolean&gt; | Promise&lt;boolean&gt; | boolean
+}
+</code></pre>
                     </section>
 
                 </section>
@@ -109,10 +176,54 @@
                     </section>
 
                     <section id="can-deactivate">
-                        <h2>CanDectivate</h2>
+                        <h2>CanDeactivate</h2>
                         <p>
-                            Handle navigation away from the current route.
+                            Mediates navigation away from the current route.
                         </p>
+                        <p class="fragment">
+                            Asks the question "Can I leave where I am?"
+                        </p>
+                    </section>
+                    
+                    <section id="can-activate-interface">
+                        <h2>CanDeactivate Interface</h2>
+<pre><code class="groovy" data-trim>
+interface CanDeactivate&lt;boolean&gt; { 
+    canDeactivate(
+        component: T, 
+        currentRoute: ActivatedRouteSnapshot, 
+        currentState: RouterStateSnapshot, 
+        nextState?: RouterStateSnapshot
+    ): Observable&lt;boolean&gt; | Promise&lt;boolean&gt; | boolean
+} 
+</code></pre>
+                    </section>
+
+                </section>
+                
+                <section id="topic-can-load">
+                    <section id="can-load-title">
+                        <h1 class="section-title">CanLoad</h1>
+                    </section>
+
+                    <section id="can-load">
+                        <h2>CanLoad</h2>
+                        <p>
+                            Mediates navigation to a feature module loaded asynchronously
+                        </p>
+                        <p class="fragment">
+                            Asks the question "Can I load this module right now?"
+                        </p>
+                    </section>
+                    
+                    <section id="can-activate-interface">
+                        <h2>CanLoad Interface</h2>
+<pre><code class="groovy" data-trim>
+interface CanLoad { 
+    canLoad(route: Route): 
+        Observable&lt;boolean&gt; | Promise&lt;boolean&gt; | boolean
+}
+</code></pre>
                     </section>
 
                 </section>
@@ -127,20 +238,21 @@
                         <p>
                             Data retrieval before route activation.
                         </p>
-                    </section>
-
-                </section>
-                
-                <section id="topic-can-load">
-                    <section id="can-load-title">
-                        <h1 class="section-title">CanLoad</h1>
-                    </section>
-
-                    <section id="can-load">
-                        <h2>CanLoad</h2>
-                        <p>
-                            Handle navigation to a feature module loaded asynchronously
+                        <p class="fragment">
+                            Pre-fetches data so you don't need to show an empty component and won't navigate if data is not found.
                         </p>
+                    </section>
+                    
+                    <section id="can-activate-interface">
+                        <h2>Resolve Interface</h2>
+<pre><code class="groovy" data-trim>
+interface Resolve&lt;T&gt; { 
+    resolve(
+        route: ActivatedRouteSnapshot, 
+        state: RouterStateSnapshot
+    ): Observable&lt;T&gt; | Promise&lt;T&gt; | T
+} 
+</code></pre>
                     </section>
 
                 </section>

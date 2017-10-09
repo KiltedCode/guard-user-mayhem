@@ -51,6 +51,11 @@ li:before {
     position: relative;
 }
 
+li .list-sub {
+    display: inline-block;
+    padding-left: 1em;
+}
+
 pre.small-code {
     font-size: .4em;
 }

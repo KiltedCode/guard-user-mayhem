@@ -1,0 +1,72 @@
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+
+body {
+    font-family: Roboto,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+    margin: 0;
+}
+
+.attraction-area-name {
+    color: rgba(255,255,255,.87);
+}
+
+.attractions-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+}
+
+.attractions-header {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    padding-left: 24px;
+    font-size: 20px;
+}
+
+.attraction-list {
+    background: #424242;
+    text-align: left;
+}
+
+.filter-row {
+    padding: 25px 5px;
+    text-align: left;
+}
+
+.filter-title {
+    display: inline-block;
+    font-size: 24px;
+    margin-right: 24px;
+}
+  
+.mat-table {
+    overflow: auto;
+    max-height: 500px;
+}
+
+.content-wrapper {
+    color: white;
+    display: block;
+    margin: 25px 50px;
+    text-align: center;
+}
+
+.toolbar--title {
+    padding-left: 5px;
+}
+
+.tile--resort, .tile--park {
+    cursor: pointer;
+}
+
+.type-filter {
+    color: rgba(255,255,255,.65);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 24px;
+    margin-right: 24px;
+}
+
+.type-filter.selected-filter {
+    color: white;
+}
