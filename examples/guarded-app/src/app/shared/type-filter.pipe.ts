@@ -8,7 +8,6 @@ import { ParkAttraction } from './park-attraction.model';
 export class TypeFilterPipe implements PipeTransform {
 
   transform(attractions: ParkAttraction[], filters?: any): any {
-    console.log('filters', filters);
     if(filters == null || filters.length == 0) {
       return attractions;
     } else {
