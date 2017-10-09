@@ -8,7 +8,9 @@
       account_box
   </mat-icon>
   <mat-icon 
-    *ngIf="loggedIn()">
+    *ngIf="loggedIn()"
+    routerLink="user"
+    class="clickable">
       account_circle
   </mat-icon>
 </mat-toolbar>

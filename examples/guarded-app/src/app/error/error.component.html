@@ -1,0 +1,10 @@
+<h1>Error!</h1>
+<ng-container [ngSwitch]="errorCode">
+  <p *ngSwitchCase="'NOT_AUTHORIZED'">
+    You're not allowed to go to this page.<br />
+    Go sit in the corner and think about what you've done.
+  </p>
+  <p *ngSwitchDefault>
+    An error occured. I have no idea what. Sorry, mate.
+  </p>
+</ng-container>

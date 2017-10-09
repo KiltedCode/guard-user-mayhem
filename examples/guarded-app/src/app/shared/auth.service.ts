@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 
+import { User } from './user.model';
+
 @Injectable()
 export class AuthService {
 
   private authorized: boolean = false;
   private user: any = {};
-  private users: any[] = [
+  private users: User[] = [
     {
       id: 0,
       name: 'Herman',
@@ -25,6 +27,10 @@ export class AuthService {
 
   constructor() { }
 
+  currentUser(): User {
+    return this.user;
+  }
+
   hasRole(role: string): boolean {
     return this.loggedIn() && this.user.role == role;
   }
@@ -33,7 +39,7 @@ export class AuthService {
     return this.authorized;
   }
 
-  login(id: number): any {
+  login(id: number): User {
     this.user = this.users[id];
     this.authorized = true;
     return this.user;
