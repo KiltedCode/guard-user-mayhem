@@ -1,5 +1,16 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
   <mat-icon>verified_user</mat-icon> <span class="toolbar--title">Guarded App</span>
+  <span class="toolbar-fill-space"></span>
+  <mat-icon 
+    *ngIf="!loggedIn()"
+    (click)="openLogin()"
+    class="clickable">
+      account_box
+  </mat-icon>
+  <mat-icon 
+    *ngIf="loggedIn()">
+      account_circle
+  </mat-icon>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

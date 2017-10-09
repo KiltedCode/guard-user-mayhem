@@ -1,11 +1,11 @@
 <h1>Where would you like to explore today?</h1>
 
 <mat-grid-list cols="3" gutterSize="5px">
-    <mat-grid-tile
-      *ngFor="let resort of resorts"
-      [style.background]="resort.color"
-      class="tile--resort"
-      routerLink="/resort/{{resort.id}}/details">
-        <h2>{{resort.name}}</h2>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <mat-grid-tile
+    *ngFor="let resort of resorts"
+    [style.background]="resort.color"
+    class="tile--resort"
+    routerLink="/resort/{{resort.id}}/details">
+      <h2>{{resort.name}}</h2>
+  </mat-grid-tile>
+</mat-grid-list>

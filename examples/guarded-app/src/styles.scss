@@ -28,6 +28,10 @@ body {
     text-align: left;
 }
 
+.clickable {
+    cursor: pointer;
+}
+
 .filter-row {
     padding: 25px 5px;
     text-align: left;
@@ -53,6 +57,10 @@ body {
 
 .toolbar--title {
     padding-left: 5px;
+}
+
+.toolbar-fill-space {
+    flex: 1 1 auto;
 }
 
 .tile--resort, .tile--park {

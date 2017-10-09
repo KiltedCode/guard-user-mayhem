@@ -4,10 +4,24 @@ import { Injectable } from '@angular/core';
 export class AuthService {
 
   private authorized: boolean = false;
-  private user: any = {
-    name: 'John',
-    role: 'ADMIN'
-  };
+  private user: any = {};
+  private users: any[] = [
+    {
+      id: 0,
+      name: 'Herman',
+      role: 'USER'
+    },
+    {
+      id: 1,
+      name: 'John',
+      role: 'ADMIN'
+    },
+    {
+      id: 2,
+      name: 'Batman',
+      role: 'SUPER_ADMIN'
+    }
+  ]
 
   constructor() { }
 
@@ -19,8 +33,10 @@ export class AuthService {
     return this.authorized;
   }
 
-  login(): void {
+  login(id: number): any {
+    this.user = this.users[id];
     this.authorized = true;
+    return this.user;
   }
 
   logout(): void {
