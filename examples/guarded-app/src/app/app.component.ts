@@ -18,16 +18,8 @@ export class AppComponent {
     public dialog: MatDialog
   ) { }
 
-  // ngOnInit() {
-
-  // }
-
   loggedIn(): boolean {
     return this.authService.loggedIn();
-  }
-
-  login(): void {
-    this.user = this.authService.login(0);
   }
 
   openLogin(): void {
