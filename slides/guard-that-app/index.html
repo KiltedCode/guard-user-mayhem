@@ -33,9 +33,6 @@
                             John Niedzwiecki
                         </p>
                     </div>
-                    <aside class="notes">
-                        
-                    </aside>
                 </section>
 
                 <section id="about-me">
@@ -139,6 +136,22 @@ interface CanActivate {
 </code></pre>
                     </section>
 
+                    <section id="can-activate-code">
+                        <h2>CanActivate Example</h2>
+                        <p>
+                            Protect user profile for authenticated users and admin page based on roles.
+                        </p>
+                        <ul class="code-files">
+                            <li>./shared/auth-guard.service</li>
+                            <li>./user-profile/user-profile.component</li>
+                            <li>./shared/role-guard.service</li>
+                            <li>./admin/admin.component</li>
+                        </ul>
+                        <p class="text-right">
+                            <a href="https://github.com/RHGeek/guard-user-mayhem/examples/guarded-app"><small>https://github.com/RHGeek/guard-user-mayhem/examples/guarded-app</small></a>
+                        </p>
+                    </section>
+
                 </section>
                 
                 <section id="topic-can-activate-child">
@@ -185,7 +198,7 @@ interface CanActivateChild {
                         </p>
                     </section>
                     
-                    <section id="can-activate-interface">
+                    <section id="can-deactivate-interface">
                         <h2>CanDeactivate Interface</h2>
 <pre><code class="groovy" data-trim>
 interface CanDeactivate&lt;boolean&gt; { 
@@ -197,6 +210,20 @@ interface CanDeactivate&lt;boolean&gt; {
     ): Observable&lt;boolean&gt; | Promise&lt;boolean&gt; | boolean
 } 
 </code></pre>
+                    </section>
+                    
+                    <section id="can-deactivate-code">
+                        <h2>CanDectivate Example</h2>
+                        <p>
+                            Protect resort details if user hasn't saved favorited items in the list.
+                        </p>
+                        <ul class="code-files">
+                            <li>./shared/can-deactivate-guard.service</li>
+                            <li>./resort-details/resort-details.component</li>
+                        </ul>
+                        <p class="text-right">
+                            <a href="https://github.com/RHGeek/guard-user-mayhem/examples/guarded-app"><small>https://github.com/RHGeek/guard-user-mayhem/examples/guarded-app</small></a>
+                        </p>
                     </section>
 
                 </section>
@@ -214,9 +241,12 @@ interface CanDeactivate&lt;boolean&gt; {
                         <p class="fragment">
                             Asks the question "Can I load this module right now?"
                         </p>
+                        <aside class="notes">
+                            You may have a large module you want to lazy load, but why load if they can't view it?
+                        </aside>
                     </section>
                     
-                    <section id="can-activate-interface">
+                    <section id="can-load-interface">
                         <h2>CanLoad Interface</h2>
 <pre><code class="groovy" data-trim>
 interface CanLoad { 
@@ -225,15 +255,29 @@ interface CanLoad {
 }
 </code></pre>
                     </section>
+                    
+                    <section id="can-load-code">
+                        <h2>CanLoad Example</h2>
+                        <p>
+                            Protect super admin module based on role.
+                        </p>
+                        <ul class="code-files">
+                            <li>./shared/role-guard.service</li>
+                            <li>./super-admin/super-admin.module</li>
+                        </ul>
+                        <p class="text-right">
+                            <a href="https://github.com/RHGeek/guard-user-mayhem/examples/guarded-app"><small>https://github.com/RHGeek/guard-user-mayhem/examples/guarded-app</small></a>
+                        </p>
+                    </section>
 
                 </section>
                 
-                <section id="topic-can-resolve">
-                    <section id="can-resolve-title">
+                <section id="topic-resolve">
+                    <section id="resolve-title">
                         <h1 class="section-title">Resolve</h1>
                     </section>
 
-                    <section id="can-resolve">
+                    <section id="resolve">
                         <h2>Resolve</h2>
                         <p>
                             Data retrieval before route activation.
@@ -241,9 +285,13 @@ interface CanLoad {
                         <p class="fragment">
                             Pre-fetches data so you don't need to show an empty component and won't navigate if data is not found.
                         </p>
+                        <aside class="notes">
+                            I like to use only with quick API calls, for exist calls.
+                            Can preload data, but then they're waiting for page after clicking link.
+                        </aside>
                     </section>
                     
-                    <section id="can-activate-interface">
+                    <section id="resolve-interface">
                         <h2>Resolve Interface</h2>
 <pre><code class="groovy" data-trim>
 interface Resolve&lt;T&gt; { 
@@ -254,22 +302,43 @@ interface Resolve&lt;T&gt; {
 } 
 </code></pre>
                     </section>
+                    
+                    <section id="resolve-code">
+                        <h2>Resolve Example</h2>
+                        <p>
+                            Resolve the park name from the id before loading resort details.
+                        </p>
+                        <ul class="code-files">
+                            <li>./shared/resort-resolver.service</li>
+                            <li>./resort-details/resort-details.component</li>
+                        </ul>
+                        <p class="text-right">
+                            <a href="https://github.com/RHGeek/guard-user-mayhem/examples/guarded-app"><small>https://github.com/RHGeek/guard-user-mayhem/examples/guarded-app</small></a>
+                        </p>
+                    </section>
 
                 </section>
-
                 <section id="wrap-up">
-                    <img src="/assets/img/angularmix.png" class="no-style conf-logo-end--mix" title="AngularMix" />
-                    <p>
-                        Find me: <span title="twitter and github">@rhgeek</span>
-                    </p>
-                    <p>
-                        <a href="https://rhgeek.github.io/" title="dev blog">https://rhgeek.github.io/</a>
-                    </p>
-                    <p>
-                        Code: <a href="https://github.com/RHGeek/guard-user-mayhem" title="code examples">https://github.com/RHGeek/guard-user-mayhem</a>
-                    </p>
+                    <section id="wrap-up-protect">
+                        <h2>Go forth and protect your users</h2>
+                        <img src="/assets/img/dance-party.gif" />
+                    </section>
+                    <section id="wrap-up-details">
+                        <img src="/assets/img/angularmix.png" class="no-style conf-logo-end--mix" title="AngularMix" />
+                        <p>
+                            Find me: <span title="twitter and github">@rhgeek</span>
+                        </p>
+                        <p>
+                            <a href="https://rhgeek.github.io/" title="dev blog">https://rhgeek.github.io/</a>
+                        </p>
+                        <p>
+                            Code: <a href="https://github.com/RHGeek/guard-user-mayhem" title="code examples">https://github.com/RHGeek/guard-user-mayhem</a>
+                        </p>
+                        <p>
+                            Please provide feedback on EventsXD app.
+                        </p>
+                    </section>
                 </section>
-
 
 			</div>
 		</div>

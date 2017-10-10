@@ -43,6 +43,11 @@ section img.heart {
     vertical-align: middle;
 }
 
+ul.code-files {
+    font-family: monospace;
+    font-size: 0.8em;
+}
+
 li:before {
     bottom: .1em;
     content: '✪';
