@@ -9,6 +9,7 @@ import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 import { ResortDetailsComponent } from './resort-details/resort-details.component';
 import { RoleGuard } from './shared/role-guard.service';
+import { SitemapComponent } from './sitemap/sitemap.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
     component: ResortDetailsComponent,
     canDeactivate: [ CanDeactivateGuard ]
   },
+  { path: 'sitemap', component: SitemapComponent },
   { 
     path: 'super', 
     loadChildren: 'app/super-admin/super-admin.module#SuperAdminModule', 

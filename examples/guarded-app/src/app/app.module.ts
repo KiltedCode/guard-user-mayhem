@@ -20,6 +20,7 @@ import { ErrorComponent } from './error/error.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminService } from './admin/admin.service';
 import { ConfirmationSaveComponent } from './shared/confirmation-save/confirmation-save.component';
+import { SitemapComponent } from './sitemap/sitemap.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ConfirmationSaveComponent } from './shared/confirmation-save/confirmati
     UserProfileComponent,
     ErrorComponent,
     AdminComponent,
-    ConfirmationSaveComponent
+    ConfirmationSaveComponent,
+    SitemapComponent
   ],
   entryComponents: [
     ConfirmationSaveComponent,

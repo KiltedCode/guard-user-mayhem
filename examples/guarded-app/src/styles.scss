@@ -65,7 +65,7 @@ button.action--save, button.action--cancel {
 }
 
 .mat-toolbar a, .mat-toolbar a:hover, .mat-toolbar a:visited {
-    color: rgba(255,255,255,.87);;
+    color: rgba(255,255,255,.87);
     text-decoration: none;
 }
 
@@ -88,6 +88,18 @@ button.action--save, button.action--cancel {
     margin: 25px 50px;
     min-height: calc(100vh - 178px);
     text-align: center;
+}
+
+.sitemap-list {
+    text-align: left;
+}
+
+.sitemap-list a, .sitemap-list a:hover, .sitemap-list a:visited {
+    color: rgba(255,255,255,.87);
+}
+
+.sitemap-list a:hover {
+    color: white;
 }
 
 .toolbar--title {
