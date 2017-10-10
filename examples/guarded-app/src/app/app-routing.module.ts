@@ -12,13 +12,28 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'admin', component: AdminComponent, canActivate: [RoleGuard], data: { roles: ['ADMIN', 'SUPER_ADMIN'] } },
+  { 
+    path: 'admin', 
+    component: AdminComponent, 
+    canActivate: [RoleGuard], 
+    data: { roles: ['ADMIN', 'SUPER_ADMIN'] } 
+  },
   { path: 'error', component: ErrorComponent},
   { path: 'home', component: HomeComponent },
   { 
     path: 'resort/:resortId/details', component: ResortDetailsComponent 
   },
-  { path: 'user', component: UserProfileComponent, canActivate: [AuthGuard] }
+  { 
+    path: 'super', 
+    loadChildren: 'app/super-admin/super-admin.module#SuperAdminModule', 
+    canLoad: [RoleGuard], 
+    data: { roles: ['SUPER_ADMIN'] } 
+  },
+  { 
+    path: 'user', 
+    component: UserProfileComponent, 
+    canActivate: [AuthGuard] 
+  }
 ];
 
 @NgModule({

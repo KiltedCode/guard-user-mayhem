@@ -5,8 +5,12 @@
     <p>Click the user icon to do so. Seriously, it's click and choose.</p>
   </ng-container>
   <ng-container *ngSwitchCase="'NOT_AUTHORIZED'">
-    <p>You're not allowed to go to this page.</p>
+    <p>You are not allowed to go to this page.</p>
     <p>Go sit in the corner and think about what you've done.</p>
+  </ng-container>
+  <ng-container *ngSwitchCase="'NOT_SUPER'">
+    <p>You are not <em>super</em>.</p>
+    <p>...and no capes!</p>
   </ng-container>
   <p *ngSwitchDefault>
     An error occured. I have no idea what. Sorry, mate.
