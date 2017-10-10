@@ -32,10 +32,14 @@ export class ResortDetailsComponent implements OnInit {
     this.edited = false;
     this.filters = [];
 
+    /* data from resolver */
+    this.route.data
+      .subscribe((data: { resortName: string }) => {
+        this.resortName = data.resortName;
+      });
+
     this.route.params.subscribe((params: Params) => {
       this.resortId = params['resortId'];
-
-      this.resortName = this.parksService.getResortName(this.resortId);
 
       /* get parks for grid */
       this.getResortDetails();

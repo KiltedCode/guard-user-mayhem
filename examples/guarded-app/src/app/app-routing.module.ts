@@ -8,6 +8,7 @@ import { CanDeactivateGuard } from './shared/can-deactivate-guard.service';
 import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 import { ResortDetailsComponent } from './resort-details/resort-details.component';
+import { ResortResolverService } from './shared/resort-resolver.service';
 import { RoleGuard } from './shared/role-guard.service';
 import { SitemapComponent } from './sitemap/sitemap.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -25,7 +26,10 @@ const routes: Routes = [
   { 
     path: 'resort/:resortId/details', 
     component: ResortDetailsComponent,
-    canDeactivate: [ CanDeactivateGuard ]
+    canDeactivate: [ CanDeactivateGuard ],
+    resolve : {
+      resortName: ResortResolverService
+    }
   },
   { path: 'sitemap', component: SitemapComponent },
   { 
@@ -45,7 +49,8 @@ const routes: Routes = [
   imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule ],
   providers: [
-    CanDeactivateGuard
+    CanDeactivateGuard,
+    ResortResolverService
   ]
 })
 export class AppRoutingModule { }

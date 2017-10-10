@@ -22,7 +22,7 @@ export class ParksService {
 
   getResortAttractions(resortId: string): Observable<ParkAttraction[]> {
     let attractions: ParkAttraction[] = [];
-    let resortName = this.getResortName(resortId);
+    let resortName = this.getResortNameInternal(resortId);
     if(this.authService.loggedIn()) {
       let currentUser = this.authService.currentUser();
       let localAttractions = localStorage.getItem(resortId + '-attractions-' + currentUser.id);
@@ -52,8 +52,12 @@ export class ParksService {
     return Observable.of(parks);
   }
 
-  getResortName(resortId: string): string {
+  getResortNameInternal(resortId: string): string {
     return this.resortIdMap[resortId];
+  }
+
+  getResortName(resortId: string): Observable<string> {
+    return Observable.of(this.resortIdMap[resortId]);
   }
   
 

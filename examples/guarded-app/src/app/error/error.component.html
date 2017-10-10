@@ -8,6 +8,10 @@
     <p>You are not allowed to go to this page.</p>
     <p>Go sit in the corner and think about what you've done.</p>
   </ng-container>
+  <ng-container *ngSwitchCase="'NOT_FOUND_RESORT'">
+    <p>The resort cannot be found.</p>
+    <p>We don't have that data so go look somewhere else</p>
+  </ng-container>
   <ng-container *ngSwitchCase="'NOT_SUPER'">
     <p>You are not <em>super</em>.</p>
     <p>...and no capes!</p>
