@@ -1,9 +1,13 @@
 <h1>Error!</h1>
 <ng-container [ngSwitch]="errorCode">
-  <p *ngSwitchCase="'NOT_AUTHORIZED'">
-    You're not allowed to go to this page.<br />
-    Go sit in the corner and think about what you've done.
-  </p>
+  <ng-container *ngSwitchCase="'NOT_AUTHENTICATED'">
+    <p>You are not logged in yet.</p>
+    <p>Click the user icon to do so. Seriously, it's click and choose.</p>
+  </ng-container>
+  <ng-container *ngSwitchCase="'NOT_AUTHORIZED'">
+    <p>You're not allowed to go to this page.</p>
+    <p>Go sit in the corner and think about what you've done.</p>
+  </ng-container>
   <p *ngSwitchDefault>
     An error occured. I have no idea what. Sorry, mate.
   </p>

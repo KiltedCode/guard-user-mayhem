@@ -42,6 +42,19 @@ body {
     font-size: 24px;
     margin-right: 24px;
 }
+
+.footer {
+    font-size: 18px;
+}
+
+.mat-toolbar a, .mat-toolbar a:hover, .mat-toolbar a:visited {
+    color: rgba(255,255,255,.87);;
+    text-decoration: none;
+}
+
+.mat-toolbar a:hover {
+    color: white;
+}
   
 .mat-table {
     overflow: auto;
@@ -52,6 +65,7 @@ body {
     color: white;
     display: block;
     margin: 25px 50px;
+    min-height: calc(100vh - 178px);
     text-align: center;
 }
 

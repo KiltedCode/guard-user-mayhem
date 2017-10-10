@@ -6,11 +6,17 @@ import { AuthService } from './auth.service';
 export class RoleGuard implements CanActivate {
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    return this.authService.hasRole(route.data['role']);
+    if(this.authService.hasRole(route.data['roles'])) {
+      return true;
+    } else {
+      this.router.navigate(['/error'], { queryParams: { code: 'NOT_AUTHORIZED' }});
+      return false;
+    }
   }
 
 }

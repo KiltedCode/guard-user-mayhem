@@ -31,8 +31,8 @@ export class AuthService {
     return this.user;
   }
 
-  hasRole(role: string): boolean {
-    return this.loggedIn() && this.user.role == role;
+  hasRole(roles: string[]): boolean {
+    return this.loggedIn() && roles.indexOf(this.user.role) > -1;
   }
 
   loggedIn(): boolean {

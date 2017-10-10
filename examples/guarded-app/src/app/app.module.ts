@@ -17,6 +17,8 @@ import { AttractionDetailsComponent } from './attraction-details/attraction-deta
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ErrorComponent } from './error/error.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminService } from './admin/admin.service';
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { ErrorComponent } from './error/error.component';
     AttractionDetailsComponent,
     LoginDialogComponent,
     UserProfileComponent,
-    ErrorComponent
+    ErrorComponent,
+    AdminComponent
   ],
   entryComponents: [
     LoginDialogComponent
@@ -45,6 +48,7 @@ import { ErrorComponent } from './error/error.component';
     MatToolbarModule
   ],
   providers: [
+    AdminService,
     AuthGuard,
     AuthService,
     ParksService,

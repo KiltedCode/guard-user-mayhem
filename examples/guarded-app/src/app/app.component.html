@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
-  <mat-icon>verified_user</mat-icon> <span class="toolbar--title">Guarded App</span>
+  <mat-icon>verified_user</mat-icon> <a routerLink="/" class="toolbar--title">Guarded App</a>
   <span class="toolbar-fill-space"></span>
   <mat-icon 
     *ngIf="!loggedIn()"
@@ -17,3 +17,7 @@
 
 <router-outlet></router-outlet>
 
+<mat-toolbar color="primary" class="footer">
+    <span class="toolbar-fill-space"></span>
+    <a *ngIf="isAdmin()" routerLink="/admin">admin</a>
+  </mat-toolbar>

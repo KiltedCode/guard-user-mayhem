@@ -18,6 +18,10 @@ export class AppComponent {
     public dialog: MatDialog
   ) { }
 
+  isAdmin(): boolean {
+    return this.authService.hasRole(['ADMIN', 'SUPER_ADMIN']);
+  }
+
   loggedIn(): boolean {
     return this.authService.loggedIn();
   }

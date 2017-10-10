@@ -2,36 +2,39 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Rx';
 
+import { AuthService } from './auth.service';
 import { Park } from './park.model';
 import { ParkAttraction } from './park-attraction.model';
+import { User } from './user.model';
 
 @Injectable()
 export class ParksService {
 
-  private attractions: ParkAttraction[];
-  private parks: Park[];
   private resortIdMap = {
     wdw : 'Walt Disney World',
     universal : 'Universal Orlando',
     legoland: 'LEGOLAND Florida Resort'
   }
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   getResortAttractions(resortId: string): Observable<ParkAttraction[]> {
     let attractions: ParkAttraction[] = [];
     let resortName = this.getResortName(resortId);
-    // TODO: if logged in, get from storage
-    // if(loggedIn) {
-    //   let localAttractions = localStorage.getItem(resortId);
-    //   if(localAttractions != null) {
-    //     this.attractions = JSON.parse(localAttractions);
-    //   }
-    // }
-    if(attractions.length == 0) {
-      // TODO: Get, Filter, ifloggedin -> Save
+    if(this.authService.loggedIn()) {
+      let currentUser = this.authService.currentUser();
+      let localAttractions = localStorage.getItem(resortId + '-attractions-' + currentUser.id);
+      if(localAttractions != null) {
+        attractions = JSON.parse(localAttractions);
+      }
+      if(attractions.length == 0) {
+        attractions = this.defaultAttractions.filter(attr => attr.resortName == resortName);
+        localStorage.setItem(resortId + '-attractions-' + currentUser.id, JSON.stringify(attractions));
+      }
+    } else {
       attractions = this.defaultAttractions.filter(attr => attr.resortName == resortName);
-      // localStorage.setItem('attractions', JSON.stringify(this.attractions));
     }
 
     return Observable.of(attractions);
@@ -45,13 +48,7 @@ export class ParksService {
   getResortName(resortId: string): string {
     return this.resortIdMap[resortId];
   }
-
-
-  resetData(): void {
-    localStorage.clear();
-  }
-
-
+  
 
   /* default data */
 
