@@ -1,48 +1,59 @@
 <h1>{{resortName}}</h1>
 
 <mat-grid-list cols="4" gutterSize="5px" rowHeight="200px">
-    <mat-grid-tile
-      *ngFor="let park of parks$ | async"
-      [style.background]="park.color"
-      class="tile--park">
-        <h2>{{park.name}}</h2>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <mat-grid-tile
+    *ngFor="let park of parks$ | async"
+    [style.background]="park.color"
+    class="tile--park">
+      <h2>{{park.name}}</h2>
+  </mat-grid-tile>
+</mat-grid-list>
 
-  <div class="filter-row">
-    <span class="filter-title">Filter:</span>
-    <a (click)="filterType('ride')" class="type-filter" [ngClass]="{'selected-filter': filters.indexOf('ride') > -1}" tabindex="0">
-        <mat-icon>toys</mat-icon> Rides
-    </a>
-    <a (click)="filterType('food')" class="type-filter" [ngClass]="{'selected-filter': filters.indexOf('food') > -1}" tabindex="0">
-        <mat-icon>local_dining</mat-icon> Food
-    </a>
-    <a (click)="filterType('shop')" class="type-filter" [ngClass]="{'selected-filter': filters.indexOf('shop') > -1}" tabindex="0">
-        <mat-icon>shop</mat-icon> Shopping
-    </a>
-    <a (click)="filterType('character')" class="type-filter" [ngClass]="{'selected-filter': filters.indexOf('character') > -1}" tabindex="0">
-        <mat-icon>contacts</mat-icon> Characters
-    </a>
-    <a (click)="filterType('show')" class="type-filter" [ngClass]="{'selected-filter': filters.indexOf('show') > -1}" tabindex="0">
-        <mat-icon>local_activity</mat-icon> Show
-    </a>
-  </div>
+<div class="filter-row">
+  <span class="filter-title">Filter:</span>
+  <a (click)="filterType('ride')" class="type-filter" [ngClass]="{'selected-filter': filters.indexOf('ride') > -1}" tabindex="0">
+      <mat-icon>toys</mat-icon> Rides
+  </a>
+  <a (click)="filterType('food')" class="type-filter" [ngClass]="{'selected-filter': filters.indexOf('food') > -1}" tabindex="0">
+      <mat-icon>local_dining</mat-icon> Food
+  </a>
+  <a (click)="filterType('shop')" class="type-filter" [ngClass]="{'selected-filter': filters.indexOf('shop') > -1}" tabindex="0">
+      <mat-icon>shop</mat-icon> Shopping
+  </a>
+  <a (click)="filterType('character')" class="type-filter" [ngClass]="{'selected-filter': filters.indexOf('character') > -1}" tabindex="0">
+      <mat-icon>contacts</mat-icon> Characters
+  </a>
+  <a (click)="filterType('show')" class="type-filter" [ngClass]="{'selected-filter': filters.indexOf('show') > -1}" tabindex="0">
+      <mat-icon>local_activity</mat-icon> Show
+  </a>
+</div>
 
 
-  <mat-list class="attraction-list mat-elevation-z8">
-      <ng-template ngFor let-attr
-      [ngForOf]="attractions | typeFilter:filters">
-      <mat-list-item>
-        <mat-icon *ngIf="attr.type=='character'" matListIcon>contacts</mat-icon>
-        <mat-icon *ngIf="attr.type=='food'" matListIcon>local_dining</mat-icon>
-        <mat-icon *ngIf="attr.type=='ride'" matListIcon>toys</mat-icon>
-        <mat-icon *ngIf="attr.type=='shop'" matListIcon>shop</mat-icon>
-        <mat-icon *ngIf="attr.type=='show'" matListIcon>local_activity</mat-icon>
-        <h3 matLine> {{attr.name}} </h3>
-        <p matLine class="attraction-area-name">
-          {{attr.areaName}}
-        </p>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-    </ng-template>  
-  </mat-list>
+<mat-list class="attraction-list mat-elevation-z8">
+    <ng-template ngFor let-attr
+    [ngForOf]="attractions | typeFilter:filters">
+    <mat-list-item>
+      <mat-icon *ngIf="attr.type=='character'" matListIcon>contacts</mat-icon>
+      <mat-icon *ngIf="attr.type=='food'" matListIcon>local_dining</mat-icon>
+      <mat-icon *ngIf="attr.type=='ride'" matListIcon>toys</mat-icon>
+      <mat-icon *ngIf="attr.type=='shop'" matListIcon>shop</mat-icon>
+      <mat-icon *ngIf="attr.type=='show'" matListIcon>local_activity</mat-icon>
+      <ng-container *ngIf="loggedIn()">
+        <button *ngIf="!attr.favorite" (click)="attr.favorite=true;edited=true;" mat-icon-button class="attraction-favorite">
+          <mat-icon matListIcon class="md-24" aria-label="not favorite">star_border</mat-icon>
+        </button>
+        <button *ngIf="attr.favorite" (click)="attr.favorite=false;edited=true;" mat-icon-button color="primary" class="attraction-favorite">
+          <mat-icon matListIcon class="md-24" aria-label="favorite">star</mat-icon>
+        </button>
+      </ng-container>
+      <h3 matLine> {{attr.name}} </h3>
+      <p matLine class="attraction-area-name">
+        {{attr.areaName}}
+      </p>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </ng-template>  
+</mat-list>
+
+<button *ngIf="edited" (click)="cancel()" mat-fab class="action--cancel">cancel</button>
+<button *ngIf="edited" (click)="save()" mat-fab color="primary" class="action--save">Save</button>

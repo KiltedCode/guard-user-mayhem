@@ -19,6 +19,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ErrorComponent } from './error/error.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminService } from './admin/admin.service';
+import { ConfirmationSaveComponent } from './shared/confirmation-save/confirmation-save.component';
 
 
 @NgModule({
@@ -31,9 +32,11 @@ import { AdminService } from './admin/admin.service';
     LoginDialogComponent,
     UserProfileComponent,
     ErrorComponent,
-    AdminComponent
+    AdminComponent,
+    ConfirmationSaveComponent
   ],
   entryComponents: [
+    ConfirmationSaveComponent,
     LoginDialogComponent
   ],
   imports: [

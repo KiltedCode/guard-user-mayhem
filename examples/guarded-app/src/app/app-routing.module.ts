@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { AuthGuard } from './shared/auth-guard.service';
 import { AttractionDetailsComponent } from './attraction-details/attraction-details.component';
+import { CanDeactivateGuard } from './shared/can-deactivate-guard.service';
 import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 import { ResortDetailsComponent } from './resort-details/resort-details.component';
@@ -21,7 +22,9 @@ const routes: Routes = [
   { path: 'error', component: ErrorComponent},
   { path: 'home', component: HomeComponent },
   { 
-    path: 'resort/:resortId/details', component: ResortDetailsComponent 
+    path: 'resort/:resortId/details', 
+    component: ResortDetailsComponent,
+    canDeactivate: [ CanDeactivateGuard ]
   },
   { 
     path: 'super', 
@@ -40,7 +43,7 @@ const routes: Routes = [
   imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule ],
   providers: [
-      
+    CanDeactivateGuard
   ]
 })
 export class AppRoutingModule { }

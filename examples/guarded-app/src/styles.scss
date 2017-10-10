@@ -5,6 +5,19 @@ body {
     margin: 0;
 }
 
+button.action--save, button.action--cancel {
+    position: fixed;
+    bottom: 15px;
+}
+
+.action--save {
+    right: 15px;
+}
+
+.action--cancel {
+    right: 81px;
+}
+
 .attraction-area-name {
     color: rgba(255,255,255,.87);
 }
@@ -21,6 +34,10 @@ body {
     align-items: center;
     padding-left: 24px;
     font-size: 20px;
+}
+
+.attraction-favorite {
+    float: right;
 }
 
 .attraction-list {

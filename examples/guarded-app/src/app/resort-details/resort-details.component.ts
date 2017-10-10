@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { Observable } from 'rxjs/Observable';
 
-import { ParkAttraction, ParksService } from '../shared/';
+import { AuthService, ConfirmationSaveComponent, ParkAttraction, ParksService } from '../shared/';
 
 @Component({
   selector: 'ga-resort-details',
@@ -14,17 +15,21 @@ import { ParkAttraction, ParksService } from '../shared/';
 export class ResortDetailsComponent implements OnInit {
 
   attractions: ParkAttraction[];
+  edited: boolean;
   filters: string[];
   parks$: Observable<any[]>;
   resortId: string;
   resortName: string;
 
   constructor(
+    private authService: AuthService,
+    public dialog: MatDialog,
     private parksService: ParksService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.edited = false;
     this.filters = [];
 
     this.route.params.subscribe((params: Params) => {
@@ -39,6 +44,20 @@ export class ResortDetailsComponent implements OnInit {
       this.getResortAttractions();
 
     });
+  }
+
+  cancel(): void {
+    this.edited = false;
+    this.getResortAttractions();
+  }
+
+  canDeactivate(): Observable<boolean> | boolean {
+    if(!this.edited) {
+      return true;
+    } else {
+      let confirmDialog = this.dialog.open(ConfirmationSaveComponent);
+      return confirmDialog.afterClosed();
+    }
   }
 
   filterType(type: string): void {
@@ -63,4 +82,12 @@ export class ResortDetailsComponent implements OnInit {
     this.parks$ = this.parksService.getResortDetails(this.resortId);
   }
 
+  loggedIn(): boolean {
+    return this.authService.loggedIn();
+  }
+
+  save(): void {
+    this.edited = false;
+    this.parksService.saveResortAttractions(this.resortId, this.attractions);
+  }
 }

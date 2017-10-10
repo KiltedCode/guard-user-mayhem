@@ -40,6 +40,13 @@ export class ParksService {
     return Observable.of(attractions);
   }
 
+  saveResortAttractions(resortId: string, attractions: ParkAttraction[]): void {
+    if(this.authService.loggedIn()) {
+      let currentUser = this.authService.currentUser();
+      localStorage.setItem(resortId + '-attractions-' + currentUser.id, JSON.stringify(attractions));
+    }
+  }
+
   getResortDetails(resortId: string): Observable<any[]> {
     let parks: any[] = this.parksByResort[resortId] ? this.parksByResort[resortId] : [];
     return Observable.of(parks);
