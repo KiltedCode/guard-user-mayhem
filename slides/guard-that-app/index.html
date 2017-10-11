@@ -143,9 +143,9 @@ interface CanActivate {
                         </p>
                         <ul class="code-files">
                             <li>./shared/auth-guard.service</li>
-                            <li>./user-profile/user-profile.component</li>
+                            <li>route: /user</li>
                             <li>./shared/role-guard.service</li>
-                            <li>./admin/admin.component</li>
+                            <li>route: /admin</li>
                         </ul>
                         <p class="text-right">
                             <a href="https://github.com/RHGeek/guard-user-mayhem/examples/guarded-app"><small>https://github.com/RHGeek/guard-user-mayhem/examples/guarded-app</small></a>
@@ -220,6 +220,7 @@ interface CanDeactivate&lt;boolean&gt; {
                         <ul class="code-files">
                             <li>./shared/can-deactivate-guard.service</li>
                             <li>./resort-details/resort-details.component</li>
+                            <li>route: /resort/:resortId/details</li>
                         </ul>
                         <p class="text-right">
                             <a href="https://github.com/RHGeek/guard-user-mayhem/examples/guarded-app"><small>https://github.com/RHGeek/guard-user-mayhem/examples/guarded-app</small></a>
@@ -263,7 +264,7 @@ interface CanLoad {
                         </p>
                         <ul class="code-files">
                             <li>./shared/role-guard.service</li>
-                            <li>./super-admin/super-admin.module</li>
+                            <li>route: /super</li>
                         </ul>
                         <p class="text-right">
                             <a href="https://github.com/RHGeek/guard-user-mayhem/examples/guarded-app"><small>https://github.com/RHGeek/guard-user-mayhem/examples/guarded-app</small></a>
@@ -311,6 +312,7 @@ interface Resolve&lt;T&gt; {
                         <ul class="code-files">
                             <li>./shared/resort-resolver.service</li>
                             <li>./resort-details/resort-details.component</li>
+                            <li>route: /resort:/resortId/details</li>
                         </ul>
                         <p class="text-right">
                             <a href="https://github.com/RHGeek/guard-user-mayhem/examples/guarded-app"><small>https://github.com/RHGeek/guard-user-mayhem/examples/guarded-app</small></a>
